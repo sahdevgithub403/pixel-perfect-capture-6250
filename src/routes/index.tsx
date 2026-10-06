@@ -1,24 +1,41 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate, useHydrated } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { getDb } from "@/data/db";
+import { Logo, TAGLINE } from "@/components/mine/Logo";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "MINE — Your things. Your people. Find them back." },
+      { name: "description", content: "QR tags and safety ID cards that let finders reach you privately." },
+      { property: "og:title", content: "MINE — Lost & Found QR" },
+      { property: "og:description", content: "QR tags and safety ID cards that let finders reach you privately." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: Splash,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function Splash() {
+  const navigate = useNavigate();
+  const hydrated = useHydrated();
+  useEffect(() => {
+    if (!hydrated) return;
+    const t = setTimeout(() => {
+      const d = getDb();
+      if (!d.onboarded) navigate({ to: "/onboarding", replace: true });
+      else if (!d.user) navigate({ to: "/login", replace: true });
+      else if (d.notifPermission === null) navigate({ to: "/permissions", replace: true });
+      else navigate({ to: "/home", replace: true });
+    }, 1200);
+    return () => clearTimeout(t);
+  }, [hydrated, navigate]);
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-background px-6 text-center">
+      <Logo size="lg" />
+      <p className="max-w-xs text-muted-foreground">{TAGLINE}</p>
     </div>
   );
 }
