@@ -10,16 +10,54 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AddonRouteImport } from './routes/addon'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as DemoRouteImport } from './routes/demo'
+import { Route as HelpRouteImport } from './routes/help'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as MessagesRouteImport } from './routes/messages'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as PermissionsRouteImport } from './routes/permissions'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as AssetsIndexRouteImport } from './routes/assets.index'
+import { Route as AssetsAssetIdRouteImport } from './routes/assets.$assetId'
+import { Route as OrderOrderIdRouteImport } from './routes/order.$orderId'
 import { Route as OrdersIndexRouteImport } from './routes/orders.index'
 import { Route as OrdersProductIdRouteImport } from './routes/orders.$productId'
+import { Route as ProfileIndexRouteImport } from './routes/profile.index'
+import { Route as ProfileEditRouteImport } from './routes/profile.edit'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AddonRoute = AddonRouteImport.update({
+  id: '/addon',
+  path: '/addon',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoRoute = DemoRouteImport.update({
+  id: '/demo',
+  path: '/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HomeRoute = HomeRouteImport.update({
@@ -32,6 +70,16 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MessagesRoute = MessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OnboardingRoute = OnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
@@ -40,6 +88,26 @@ const OnboardingRoute = OnboardingRouteImport.update({
 const PermissionsRoute = PermissionsRouteImport.update({
   id: '/permissions',
   path: '/permissions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssetsIndexRoute = AssetsIndexRouteImport.update({
+  id: '/assets/',
+  path: '/assets/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssetsAssetIdRoute = AssetsAssetIdRouteImport.update({
+  id: '/assets/$assetId',
+  path: '/assets/$assetId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrderOrderIdRoute = OrderOrderIdRouteImport.update({
+  id: '/order/$orderId',
+  path: '/order/$orderId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OrdersIndexRoute = OrdersIndexRouteImport.update({
@@ -52,73 +120,174 @@ const OrdersProductIdRoute = OrdersProductIdRouteImport.update({
   path: '/orders/$productId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileIndexRoute = ProfileIndexRouteImport.update({
+  id: '/profile/',
+  path: '/profile/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileEditRoute = ProfileEditRouteImport.update({
+  id: '/profile/edit',
+  path: '/profile/edit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/addon': typeof AddonRoute
+  '/checkout': typeof CheckoutRoute
+  '/demo': typeof DemoRoute
+  '/help': typeof HelpRoute
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
+  '/messages': typeof MessagesRoute
+  '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
   '/permissions': typeof PermissionsRoute
+  '/settings': typeof SettingsRoute
+  '/assets/$assetId': typeof AssetsAssetIdRoute
+  '/order/$orderId': typeof OrderOrderIdRoute
   '/orders/$productId': typeof OrdersProductIdRoute
+  '/profile/edit': typeof ProfileEditRoute
+  '/assets/': typeof AssetsIndexRoute
   '/orders/': typeof OrdersIndexRoute
+  '/profile/': typeof ProfileIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/addon': typeof AddonRoute
+  '/checkout': typeof CheckoutRoute
+  '/demo': typeof DemoRoute
+  '/help': typeof HelpRoute
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
+  '/messages': typeof MessagesRoute
+  '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
   '/permissions': typeof PermissionsRoute
+  '/settings': typeof SettingsRoute
+  '/assets/$assetId': typeof AssetsAssetIdRoute
+  '/order/$orderId': typeof OrderOrderIdRoute
   '/orders/$productId': typeof OrdersProductIdRoute
+  '/profile/edit': typeof ProfileEditRoute
+  '/assets': typeof AssetsIndexRoute
   '/orders': typeof OrdersIndexRoute
+  '/profile': typeof ProfileIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/addon': typeof AddonRoute
+  '/checkout': typeof CheckoutRoute
+  '/demo': typeof DemoRoute
+  '/help': typeof HelpRoute
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
+  '/messages': typeof MessagesRoute
+  '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
   '/permissions': typeof PermissionsRoute
+  '/settings': typeof SettingsRoute
+  '/assets/$assetId': typeof AssetsAssetIdRoute
+  '/order/$orderId': typeof OrderOrderIdRoute
   '/orders/$productId': typeof OrdersProductIdRoute
+  '/profile/edit': typeof ProfileEditRoute
+  '/assets/': typeof AssetsIndexRoute
   '/orders/': typeof OrdersIndexRoute
+  '/profile/': typeof ProfileIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
+    | '/addon'
+    | '/checkout'
+    | '/demo'
+    | '/help'
     | '/home'
     | '/login'
+    | '/messages'
+    | '/notifications'
     | '/onboarding'
     | '/permissions'
+    | '/settings'
+    | '/assets/$assetId'
+    | '/order/$orderId'
     | '/orders/$productId'
+    | '/profile/edit'
+    | '/assets/'
     | '/orders/'
+    | '/profile/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
+    | '/addon'
+    | '/checkout'
+    | '/demo'
+    | '/help'
     | '/home'
     | '/login'
+    | '/messages'
+    | '/notifications'
     | '/onboarding'
     | '/permissions'
+    | '/settings'
+    | '/assets/$assetId'
+    | '/order/$orderId'
     | '/orders/$productId'
+    | '/profile/edit'
+    | '/assets'
     | '/orders'
+    | '/profile'
   id:
     | '__root__'
     | '/'
+    | '/about'
+    | '/addon'
+    | '/checkout'
+    | '/demo'
+    | '/help'
     | '/home'
     | '/login'
+    | '/messages'
+    | '/notifications'
     | '/onboarding'
     | '/permissions'
+    | '/settings'
+    | '/assets/$assetId'
+    | '/order/$orderId'
     | '/orders/$productId'
+    | '/profile/edit'
+    | '/assets/'
     | '/orders/'
+    | '/profile/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AddonRoute: typeof AddonRoute
+  CheckoutRoute: typeof CheckoutRoute
+  DemoRoute: typeof DemoRoute
+  HelpRoute: typeof HelpRoute
   HomeRoute: typeof HomeRoute
   LoginRoute: typeof LoginRoute
+  MessagesRoute: typeof MessagesRoute
+  NotificationsRoute: typeof NotificationsRoute
   OnboardingRoute: typeof OnboardingRoute
   PermissionsRoute: typeof PermissionsRoute
+  SettingsRoute: typeof SettingsRoute
+  AssetsAssetIdRoute: typeof AssetsAssetIdRoute
+  OrderOrderIdRoute: typeof OrderOrderIdRoute
   OrdersProductIdRoute: typeof OrdersProductIdRoute
+  ProfileEditRoute: typeof ProfileEditRoute
+  AssetsIndexRoute: typeof AssetsIndexRoute
   OrdersIndexRoute: typeof OrdersIndexRoute
+  ProfileIndexRoute: typeof ProfileIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -128,6 +297,41 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/addon': {
+      id: '/addon'
+      path: '/addon'
+      fullPath: '/addon'
+      preLoaderRoute: typeof AddonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo': {
+      id: '/demo'
+      path: '/demo'
+      fullPath: '/demo'
+      preLoaderRoute: typeof DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/home': {
@@ -144,6 +348,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/messages': {
+      id: '/messages'
+      path: '/messages'
+      fullPath: '/messages'
+      preLoaderRoute: typeof MessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/onboarding': {
       id: '/onboarding'
       path: '/onboarding'
@@ -156,6 +374,34 @@ declare module '@tanstack/react-router' {
       path: '/permissions'
       fullPath: '/permissions'
       preLoaderRoute: typeof PermissionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assets/': {
+      id: '/assets/'
+      path: '/assets'
+      fullPath: '/assets/'
+      preLoaderRoute: typeof AssetsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assets/$assetId': {
+      id: '/assets/$assetId'
+      path: '/assets/$assetId'
+      fullPath: '/assets/$assetId'
+      preLoaderRoute: typeof AssetsAssetIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/order/$orderId': {
+      id: '/order/$orderId'
+      path: '/order/$orderId'
+      fullPath: '/order/$orderId'
+      preLoaderRoute: typeof OrderOrderIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/orders/': {
@@ -172,17 +418,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OrdersProductIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile/': {
+      id: '/profile/'
+      path: '/profile'
+      fullPath: '/profile/'
+      preLoaderRoute: typeof ProfileIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile/edit': {
+      id: '/profile/edit'
+      path: '/profile/edit'
+      fullPath: '/profile/edit'
+      preLoaderRoute: typeof ProfileEditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AddonRoute: AddonRoute,
+  CheckoutRoute: CheckoutRoute,
+  DemoRoute: DemoRoute,
+  HelpRoute: HelpRoute,
   HomeRoute: HomeRoute,
   LoginRoute: LoginRoute,
+  MessagesRoute: MessagesRoute,
+  NotificationsRoute: NotificationsRoute,
   OnboardingRoute: OnboardingRoute,
   PermissionsRoute: PermissionsRoute,
+  SettingsRoute: SettingsRoute,
+  AssetsAssetIdRoute: AssetsAssetIdRoute,
+  OrderOrderIdRoute: OrderOrderIdRoute,
   OrdersProductIdRoute: OrdersProductIdRoute,
+  ProfileEditRoute: ProfileEditRoute,
+  AssetsIndexRoute: AssetsIndexRoute,
   OrdersIndexRoute: OrdersIndexRoute,
+  ProfileIndexRoute: ProfileIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

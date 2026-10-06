@@ -267,7 +267,7 @@ export const orderService = {
     setDb((d) => {
       o = d.orders.find((x) => x.id === id);
       if (!o) return;
-      const next = to ?? STATUS_FLOW[Math.min(STATUS_FLOW.indexOf(o.status) + 1, 3)];
+      const next: OrderStatus = to ?? STATUS_FLOW[Math.min(STATUS_FLOW.indexOf(o.status) + 1, 3)]!;
       o.status = next;
       if (next === "Delivered" && !o.assetsGenerated) assetService.generateForOrder(d, o);
     });
@@ -335,7 +335,7 @@ export const finderService = {
   async sendVoice(publicId: string, audioUrl: string | undefined, durationSec: number) {
     await network(800);
     const transcript = DEMO_TRANSCRIPTS[Math.floor(Math.random() * DEMO_TRANSCRIPTS.length)];
-    return messageService.create({ qrId: publicId, type: "voice", content: "Voice message", audioUrl, durationSec, transcript, demoAudio: !audioUrl });
+    return messageService.create({ qrId: publicId, type: "voice", content: "Voice message", ...(audioUrl ? { audioUrl } : {}), durationSec, transcript: transcript ?? "", demoAudio: !audioUrl });
   },
   async sendLocation(publicId: string) {
     const loc = await locationService.current();
