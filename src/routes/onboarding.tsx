@@ -23,7 +23,7 @@ function Onboarding() {
     authService.completeOnboarding();
     navigate({ to: "/login" });
   };
-  const S = SLIDES[i];
+  const S = SLIDES[i]!;
   return (
     <div className="mx-auto flex min-h-screen max-w-md flex-col px-6 py-6">
       <div className="flex justify-end">
